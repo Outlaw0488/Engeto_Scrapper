@@ -53,20 +53,20 @@ def data_obci(slovnik_obci: dict):
         for strana in strany:
           try:
             dict_obsahu[strana] = soup_obec.find("td", string=re.compile(strana[:20])).next_sibling.next_sibling.text
-          except: #pokud nenajde danou stranu na webove strance obce, tak dej prazdnou bunku s pocty hlasu
+          except:
             dict_obsahu[strana] = " "
         # slovnik s daty kazde obce nahraju postupne do listu, aby to pak zpracovala whiterows funkce
         list_dat.append(dict_obsahu)
     print("Data obcí zapsána")
     return list_dat
 
-def csv_zapis(obsah:list, nazev_souboru):
+def csv_zapis(obsah: list, nazev_souboru: str):
     """zapisovani dat do CSV"""
     header = ['kód obce', 'název obce', 'voliči v seznamu', 'vydané obálky', 'platné hlasy', 'Občanská demokratická strana',
-              'Řád národa - Vlastenecká unie', 'CESTA ODPOVĚDNÉ SPOLEČNOSTI', 'Česká str.sociálně demokrat.',
+              'Řád národa - Vlastenecká unie', 'CESTA ODPOVĚDNÉ SPOLEČNOSTI', 'Česká str.sociálně demokrat.','Volte Pr.Blok www.cibulka.net',
               'Radostné Česko', 'STAROSTOVÉ A NEZÁVISLÍ', 'Komunistická str.Čech a Moravy', 'Strana zelených',
-              'ROZUMNÍ-stop migraci,diktát.EU', 'Strana svobodných občanů', 'Blok proti islam.-Obran.domova',
-              'Občanská demokratická aliance', 'Česká pirátská strana', 'Referendum o Evropské unii', 'TOP 09', 'ANO 2011',
+              'ROZUMNÍ-stop migraci,diktát.EU','Společ.proti výst.v Prok.údolí', 'Strana svobodných občanů', 'Blok proti islam.-Obran.domova',
+              'Občanská demokratická aliance', 'Česká pirátská strana', 'OBČANÉ 2011-SPRAVEDL. PRO LIDI', 'Unie H.A.V.E.L.', 'Referendum o Evropské unii', 'TOP 09', 'ANO 2011',
               'Dobrá volba 2016', 'SPR-Republ.str.Čsl. M.Sládka', 'Křesť.demokr.unie-Čs.str.lid.',
               'Česká strana národně sociální', 'REALISTÉ', 'SPORTOVCI', 'Dělnic.str.sociální spravedl.',
               'Svob.a př.dem.-T.Okamura (SPD)', 'Strana Práv Občanů']
